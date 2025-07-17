@@ -111,7 +111,7 @@ In the event something goes wrong—or if something happens to me—my family ca
 
 I resorted to this workaround because TrueNAS doesn’t natively support backing up directly to an NTFS- or FAT-formatted drive. In fact, there’s no built-in, one-click solution for external drive backups.
 
-The closest native option would involve creating a ZFS pool on the external drive, setting up a Replication Task to copy datasets from the main storage pool, and then exporting the ZFS pool after transfer. But this makes the external drive unreadable on most systems—only Linux with ZFS utilities installed can recognize it, and even then, it requires command-line operations to mount. That’s far too convoluted for other family members to do.
+The closest native option would involve creating a ZFS pool on the external drive, setting up a Replication Task to copy datasets from the main storage pool, and then exporting the ZFS pool after transfer. But this makes the external drive inaccessible on most systems—only Linux with ZFS utilities installed can recognize it, and on top of that, it requires entering a command (in terminal) to mount. That’s too convoluted for other family members to do.
 
 ## Closing
 
