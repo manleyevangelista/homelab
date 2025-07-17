@@ -1,6 +1,5 @@
 # homelab
 # Manley's Homelab
-
 ## Intro
 This repository is dedicated to my homelab, which serves as the core of my home network setup. It currently includes three routers and one compute device functioning as a dedicated server.
 
