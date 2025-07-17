@@ -1,5 +1,6 @@
-# homelab
-# Manley's Homelab
+# Manley's Mini Home Lab
+<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/homelab_setup_07172025.jpg" style="width:800px;">
+
 ## Intro
 This repository is dedicated to my homelab, which serves as the core of my home network setup. It currently includes three routers and one compute device functioning as a dedicated server.
 
@@ -7,7 +8,7 @@ In the sections below, I’ll break down the hardware, software, and strategies 
 
 ## Rationale
 
-I wanted something simple and reliable, with some level of redundancy — especially for the server, since it doesn’t just house my files, but actively handles them on a daily basis.
+I wanted something simple, silent, and reliable, with some level of redundancy — especially for the server, since it doesn’t just house my files, but actively handles them on a daily basis.
 
 ## Hardware
 ### Routers
@@ -36,6 +37,11 @@ On this router, I’ve set the DNS to AdGuard’s public DNS, which blocks ads n
 The reason I have separate routers is simple: if one ISP goes down, I don’t need to spend half a day reconnecting a dozen WiFi devices. Not to mention, not long ago, our ISP swapped Router #1 with a new one — more locked down and with fewer Ethernet ports. I can’t even change the DNS. At least that won’t be a problem with this router.
 
 ### Server
+<p align="left">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_front.jpg" style="width:500px;">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_back_07172025.jpg" style="width:500px;">
+</p>
+
 **HP EliteDesk 800 G3**
 
 Specs: 
@@ -59,6 +65,12 @@ All of the routers run their respective stock firmware — none of them have cus
 The server, by the way, is running TrueNAS Scale 24.04.1 as of writing. The following things have been set, not limited to:
 
 ## Configuration
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openbirdseyeview_07172025.jpg" style="width:495px;">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openangled_07172025.jpg" style="width:500px;">
+</p>
+
+
 - The two hard drives (2×4TB Seagate SkyHawks) are configured as **RAID 1** pool.
   - Yes, RAID 1 is not a backup, but it does provide a layer of protection in case one of the drives fails, since data is mirrored to both. It's unlikely for both drives to fail at the same time—so if one dies, I just replace it, and the system rebuilds the mirror, like nothing happened.
 - Created a single dataset and network share to house all files in the storage pool.
@@ -77,10 +89,23 @@ The server, by the way, is running TrueNAS Scale 24.04.1 as of writing. The foll
   - It’s configured to use Intel Quick Sync for hardware-accelerated encoding, allowing smooth media streaming to devices that may not support certain codecs.
 
 ## Backup strategy
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/20250717_1BackupToExtHDD.jpg" style="width:500px;">
+</p>
+
 
 While RAID can provide some level of redundancy, it’s not a true backup. It doesn’t protect against file corruption, human error (like accidental deletion or overwriting), or catastrophic events such as theft or natural disasters. That’s why an additional layer of protection is essential: regularly backing up all files from the storage pool to an external drive, and storing that drive offsite.
 
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/PassExtHJDD.png" style="width:500px;">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/ExtHDDOnVM.png" style="width:378px;">
+</p>
+
 To implement this, I mounted the network share (which is the only file share on the server) as a mapped drive inside a Windows 11 virtual machine. I configured the VM to accept USB devices and passed through the connected external drive. Once recognized by Windows, I used a free program called FreeFileSync to mirror the contents of the network share onto the external drive. After syncing, I simply eject the drive from Windows, unplug it, and take it offsite for safekeeping.
+
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/FreeFileSync_Syncing.png" style="width:500px;">
+</p>
 
 In the event something goes wrong—or if something happens to me—my family can still access the files with ease. They can just plug the external drive into any computer and view the contents without needing special software or technical knowledge.
 
@@ -90,7 +115,7 @@ The closest native option would involve creating a ZFS pool on the external driv
 
 ## Closing
 
-I’m happy with my current setup, and it should last me at least the next five years (as of July 2025). I didn’t go with WiFi 7 or 2.5Gbps Ethernet because only one device supports it, so it’s not worth the extra cost.
+I’m happy with my current setup, and it should last me at least the next five years (as of July 2025). I love how silent the whole thing is. I didn’t go with WiFi 7 or 2.5Gbps Ethernet because only one device supports it, so it’s not worth the extra cost.
 
 I also chose 4TB of storage since I don’t have many files. Out of the 1.3TB I’m using, about half are movies and shows that I delete after watching. I’ll upgrade storage only when needed.
 
