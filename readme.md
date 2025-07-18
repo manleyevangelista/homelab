@@ -16,6 +16,7 @@ I wanted something simple, silent, and reliable, with some level of redundancy �
 ### Routers
 
 **Note**: All these only have a gigabit port. 
+
 **Router #1**: Fiberhome HG6145D (Globe GFiber Prepaid)
 
 This is our primary internet connection. So far, it’s been rock stable — rain or shine. DMZ is configured to point to Router #3.
@@ -113,7 +114,9 @@ To implement this, I mounted the network share (which is the only file share on 
 
 In the event something goes wrong—or if something happens to me—my family can still access the files with ease. They can just plug the external drive into any computer and view the contents without needing special software or technical knowledge.
 
-<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/ExtHDDNTFS_2025-07-17%20.png" style="width:800px;">
+(Yes. At the moment, I'm using a 2TB external drive to back up my 4TB server. My total data usage isn't even close to 2TB, so I'm just reusing the drive that used to store my files. If I eventually get closer to 2TB, I'll replace it with a 4TB one.)
+
+<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/ExtHDDNTFS_2025-07-17%20.png" style="width:400px;">
 
 I resorted to this workaround because TrueNAS doesn’t natively support backing up directly to an NTFS- or FAT-formatted drive. In fact, there’s no built-in, one-click solution for external drive backups.
 
