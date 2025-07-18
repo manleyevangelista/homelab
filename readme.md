@@ -103,6 +103,7 @@ The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 </p>
 
 - IP forwarding is enabled for Tailscale and ZeroTier, allowing me to access the server using the same local IP—whether I’m at home or connected remotely via VPN.
+  - For example, if I access the server using “192.168.0.3” while at home, I can do the same when I’m away, with Tailscale or ZeroTier.
 
 <p align="left">
   <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASIPForwarding.jpg" style="width:1000px;">
