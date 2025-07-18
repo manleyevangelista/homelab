@@ -10,6 +10,8 @@ In the sections below, I’ll break down the hardware, software, and strategies 
 
 I wanted something simple, silent, and reliable, with some level of redundancy — especially for the server, since it doesn’t just house my files, but actively handles them on a daily basis.
 
+I also wanted it to be modular so if something breaks, I can easily isolate and fix it without affecting everything else.
+
 ## Hardware
 <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/Network%20Map.jpg" style="width:800px;">
 
