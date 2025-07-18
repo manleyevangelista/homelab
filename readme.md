@@ -38,7 +38,7 @@ WiFi is set to automatic on both 2.4 GHz and 5 GHz bands, since this router 
 
 Now, this is the main hub for both my homelab and home network. Either Router #1 or #2 is connected to its WAN port, depending on which internet connection I’m using at the moment. From here, everything else connects — the server, a repeater in the garage, and all WiFi devices.
 
-WiFi is set to Channel 11 (2.4 GHz) and Channel 165 (5 GHz) to avoid interference with Router #1.
+WiFi is set to Channel 11 (2.4 GHz) and Channel 165 (5 GHz) to avoid interference with Router #1 and #2.
 
 On this router, I’ve set the DNS to AdGuard’s public DNS, which blocks ads network-wide. I’ve also bound the MAC addresses of the server and CCTV cameras to static IPs — makes them easier to reference.
 
@@ -74,7 +74,9 @@ Specs:
 
 ## Software
 
-All of the routers run their respective stock firmware — none of them have custom firmware installed. For one, there’s no custom firmware available for them anyway. And second, I don’t want to risk bricking anything, because if I screw it up, I’ll have to pay someone from the ISP to come and fix it. Especially with the Globe router — if it gets reset, all of its settings (including the IPOE credentials) are wiped, and Globe usually won’t give those out.
+All of the routers run their respective stock firmware — none of them have custom firmware installed. 
+
+For one, there’s no custom firmware available for them to begin with. And second, I don’t want to risk bricking anything, because if I screw it up, I’ll have to pay someone from the ISP to come and fix it. Especially with the Globe router — if it gets reset, all of its settings (including the IPOE credentials) are wiped, and Globe usually won’t give those out.
 
 The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 
@@ -140,12 +142,14 @@ The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 
 While RAID can provide some level of redundancy, it’s not a true backup. It doesn’t protect against file corruption, human error (like accidental deletion or overwriting), or catastrophic events such as theft or natural disasters. That’s why an additional layer of protection is essential: regularly backing up all files from the storage pool to an external drive, and storing that drive offsite.
 
+To implement this, I mounted the network share (which is the only file share on the server) as a mapped drive inside a Windows 11 virtual machine. I configured the VM to accept USB devices and passed through the connected external drive.
+
 <p align="left">
     <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/PassExtHJDD.png" style="width:500px;">
     <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/ExtHDDOnVM.png" style="width:378px;">
 </p>
 
-To implement this, I mounted the network share (which is the only file share on the server) as a mapped drive inside a Windows 11 virtual machine. I configured the VM to accept USB devices and passed through the connected external drive. Once recognized by Windows, I used a free program called FreeFileSync to mirror the contents of the network share onto the external drive. After syncing, I simply eject the drive from Windows, unplug it, and take it offsite for safekeeping.
+Once recognized by Windows, I used a free program called FreeFileSync to mirror the contents of the network share onto the external drive. After syncing, I simply eject the drive from Windows, unplug it, and take it offsite for safekeeping.
 
 <p align="left">
     <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/FreeFileSync_Syncing.png" style="width:500px;">
@@ -186,5 +190,11 @@ The closest native option would involve creating a ZFS pool on the external driv
 I’m happy with my current setup, and it should last me at least the next five years (as of July 2025). I love how silent the whole thing is. I didn’t go with WiFi 7 or 2.5Gbps Ethernet because only one device supports it, so it’s not worth the extra cost.
 
 I also chose 4TB of storage since I don’t have many files. Out of the 1.3TB I’m using, about half are movies and shows that I delete after watching. I’ll upgrade storage only when needed.
+
+As I was adding pictures to this page, I realized that my setup is unintentionally color-coded — black and white. This actually makes it easier to guide my mother when I’m not home. 
+
+For example, if one of the ISPs goes down, I can simply tell her:
+
+>"Disconnect the black wires from the white router on the left, and move them to the other router on the right."
 
 Overall, this setup balances between cost and practicality. 
