@@ -122,6 +122,25 @@ I resorted to this workaround because TrueNAS doesn’t natively support backing
 
 The closest native option would involve creating a ZFS pool on the external drive, setting up a Replication Task to copy datasets from the main storage pool, and then exporting the ZFS pool after transfer. But this makes the external drive inaccessible on most systems—only Linux with ZFS utilities installed can recognize it, and on top of that, it requires entering a command (in terminal) to mount. That’s too convoluted for other family members to do.
 
+## Costs
+
+| Item                                                         | Cost (in USD) | Source                              |
+|:-------------------------------------------------------------|:--------------|:------------------------------------|
+| Fiberhome HG6145D (Globe GFiber Prepaid)                     | $26.50        | Globe Telecom (Online; Philippines) |
+| Zowee H155-382 (PLDT Home WiFi 5G)                           | $26.68        | PLDT Store (SM; Philippines)        |
+| TP-Link Archer AX3000                                        | $5.99         | Savers (Thrift Store; U.S.)         |
+| HP EliteDesk 800 G3 (i5-7500, 16GB RAM, 1TB HDD, Win 11 COA) | $97.30        | Facebook Marketplace (Philippines)  |
+| 2x4TB Seagate SkyHawk(s)                                     | $180.26       | Lazada (Philippines)                |
+| 2x8GB Kingston HyperX Fury 2666MHz                           | $22.38        | Shopee (Philippines)                |
+| 128GB SK-Hynix NVMe SSD                                      | $10.60        | Shopee (Philippines)                |
+| 256GB SK-Hynix NVMe SSD                                      | $16           | Facebook Marketplace (Philippines)  |
+| SATA cable (for second HDD)                                  | $0.01         | Shopee (Philippines)                |
+| Set of HP drive screws w/ gromets (for second HDD)           | $2.00         | Lazada (Philippines)                |
+| PCIe to NVMe adapter (for second SSD|                        | $2.75         | Lazada (Philippines)                |
+| **Total**                                                    | **$390.47**   |                                     |
+
+**Note**: Total is approximate, due to varying conversion rates. 
+
 ## Closing
 
 I’m happy with my current setup, and it should last me at least the next five years (as of July 2025). I love how silent the whole thing is. I didn’t go with WiFi 7 or 2.5Gbps Ethernet because only one device supports it, so it’s not worth the extra cost.
