@@ -34,6 +34,8 @@ Now, this is the main hub for both my homelab and home network. Either Router #1
 
 WiFi is set to Channel 11 (2.4 GHz) and Channel 165 (5 GHz) to avoid interference with Router #1.
 
+<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/MACAddressBinding%202025-07-17%20172239.png" style="width:800px;">
+
 On this router, I’ve set the DNS to AdGuard’s public DNS, which blocks ads network-wide. I’ve also bound the MAC addresses of the server and CCTV cameras to static IPs — makes them easier to reference.
 
 The reason I have separate routers is simple: if one ISP goes down, I don’t need to spend half a day reconnecting a dozen WiFi devices. Not to mention, not long ago, our ISP swapped Router #1 with a new one — more locked down and with fewer Ethernet ports. I can’t even change the DNS. At least that won’t be a problem with this router.
@@ -110,6 +112,8 @@ To implement this, I mounted the network share (which is the only file share on 
 </p>
 
 In the event something goes wrong—or if something happens to me—my family can still access the files with ease. They can just plug the external drive into any computer and view the contents without needing special software or technical knowledge.
+
+<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/ExtHDDNTFS_2025-07-17%20.png" style="width:800px;">
 
 I resorted to this workaround because TrueNAS doesn’t natively support backing up directly to an NTFS- or FAT-formatted drive. In fact, there’s no built-in, one-click solution for external drive backups.
 
