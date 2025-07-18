@@ -1,7 +1,9 @@
 # Manley's Mini Home Lab
+
 <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/homelab_setup_07172025.jpg" style="width:800px;">
 
 ## Intro
+
 This repository is dedicated to my homelab, which serves as the core of my home network setup. It currently includes three routers and one compute device functioning as a dedicated server.
 
 In the sections below, I’ll break down the hardware, software, and strategies I use to keep it up and running.
@@ -13,6 +15,7 @@ My main objective was to build a setup where all my files are centralized and ac
 I wanted something simple, silent, and reliable, with some level of redundancy — especially for the server, since it doesn’t just house my files, but actively handles them on a daily basis. I also wanted this to be modular, so if something breaks, I can easily isolate and fix it without affecting everything else.
 
 ## Hardware
+
 <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/Network%20Map.jpg" style="width:800px;">
 
 ### Routers
@@ -37,16 +40,19 @@ Now, this is the main hub for both my homelab and home network. Either Router #1
 
 WiFi is set to Channel 11 (2.4 GHz) and Channel 165 (5 GHz) to avoid interference with Router #1.
 
-<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/MACAddressBinding%202025-07-17%20172239.png" style="width:800px;">
-
 On this router, I’ve set the DNS to AdGuard’s public DNS, which blocks ads network-wide. I’ve also bound the MAC addresses of the server and CCTV cameras to static IPs — makes them easier to reference.
+
+<img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/MACAddressBinding%202025-07-17%20172239.png" style="width:800px;">
 
 The reason I have separate routers is simple: if one ISP goes down, I don’t need to spend half a day reconnecting a dozen WiFi devices. Not to mention, not long ago, our ISP swapped Router #1 with a new one — more locked down and with fewer Ethernet ports. I can’t even change the DNS. At least that won’t be a problem with this router.
 
 ### Server
+
 <p align="left">
   <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_front.jpg" style="width:500px;">
   <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_back_07172025.jpg" style="width:500px;">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openbirdseyeview_07172025.jpg" style="width:495px;">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openangled_07172025.jpg" style="width:500px;">
 </p>
 
 **HP EliteDesk 800 G3**
@@ -67,35 +73,66 @@ Specs:
 - 2X PCI-E X2
 
 ## Software
+
 All of the routers run their respective stock firmware — none of them have custom firmware installed. For one, there’s no custom firmware available for them anyway. And second, I don’t want to risk bricking anything, because if I screw it up, I’ll have to pay someone from the ISP to come and fix it. Especially with the Globe router — if it gets reset, all of its settings (including the IPOE credentials) are wiped, and Globe usually won’t give those out.
 
-The server, by the way, is running TrueNAS Scale 24.04.1 as of writing. The following things have been set, not limited to:
+The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 
-## Configuration
 <p align="left">
-    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openbirdseyeview_07172025.jpg" style="width:495px;">
-    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/hp_elitedesk800g3_openangled_07172025.jpg" style="width:500px;">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASDashboard.png" style="width:1000px;">
 </p>
 
+## Configuration
 
 - The two hard drives (2×4TB Seagate SkyHawks) are configured as **RAID 1** pool.
   - Yes, RAID 1 is not a backup, but it does provide a layer of protection in case one of the drives fails, since data is mirrored to both. It's unlikely for both drives to fail at the same time—so if one dies, I just replace it, and the system rebuilds the mirror, like nothing happened.
 - Created a single dataset and network share to house all files in the storage pool.
    - This simplifies file management and makes it easier to keep track of and move files around.
+
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASDatasheets.png" style="width:500px;">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASShares.png" style="width:500px;">
+</p>
+
 - I have a **network bridge** (br0) configured, so virtual machines can access the server.
-- There's a **Windows 11 VM** installed. It's mainly used to sync the only network share (which includes all files in the storage pool) to an NTFS-formatted external drive. TrueNAS itself can’t write to NTFS, so this workaround handles that.
-  - It's not limited to that—it also doubles as a cloud desktop when I'm away from home—handy for accessing Microsoft Office, Adobe Photoshop, or for browsing with a Philippine IP when needed.
+
+<p align="left">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASInterfaces.jpg" style="width:1000px;">
+</p>
+
 - IP forwarding is enabled for Tailscale and ZeroTier, allowing me to access the server using the same local IP—whether I’m at home or connected remotely via VPN.
+
+<p align="left">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASIPForwarding.jpg" style="width:1000px;">
+</p>
+
 - The storage pool is scrubbed every two weeks, which basically checks for any errors and fixes whatever needs fixing.
 - I also have automatic snapshots taken weekly.
    - That way, if something gets accidentally deleted or goes missing, I can recover it easily without having to fetch the external backup drive.
+
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASScrubSnapshots.png" style="width:500px;">
+</p>
+
+- There's a **Windows 11 VM** installed. It's mainly used to sync the only network share (which includes all files in the storage pool) to an NTFS-formatted external drive. TrueNAS itself can’t write to NTFS, so this workaround handles that.
+  - It's not limited to that—it also doubles as a cloud desktop when I'm away from home—handy for accessing Microsoft Office, Adobe Photoshop, or for browsing with a Philippine IP when needed.
+
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASWin11.png" style="width:1000px;">
+</p>
+
 - Installed and configured both Tailscale and ZeroTier to enable secure **remote access** outside the house.
    - I was able to access my server halfway across the world (I was in America; the server is in the Philippines).
    - I was even able to access it on the plane—35,000 feet above the middle of the Pacific Ocean.
 - Installed Jellyfin to act as a **media server**.
   - It’s configured to use Intel Quick Sync for hardware-accelerated encoding, allowing smooth media streaming to devices that may not support certain codecs.
 
+<p align="left">
+    <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASInstalledApps.png" style="width:1000px;">
+</p>
+
 ## Backup strategy
+
 <p align="left">
     <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/20250717_1BackupToExtHDD.jpg" style="width:500px;">
 </p>
