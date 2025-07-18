@@ -136,7 +136,7 @@ The closest native option would involve creating a ZFS pool on the external driv
 | 256GB SK-Hynix NVMe SSD                                      | $16           | Facebook Marketplace (Philippines)  |
 | SATA cable (for second HDD)                                  | $0.01         | Shopee (Philippines)                |
 | Set of HP drive screws w/ gromets (for second HDD)           | $2.00         | Lazada (Philippines)                |
-| PCIe to NVMe adapter (for second SSD|                        | $2.75         | Lazada (Philippines)                |
+| PCIe to NVMe adapter (for second SSD)                        | $2.75         | Lazada (Philippines)                |
 | **Total**                                                    | **$390.47**   |                                     |
 
 **Note**: Total is approximate, due to varying conversion rates. 
