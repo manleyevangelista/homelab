@@ -97,7 +97,7 @@ The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 - I have a **network bridge** (br0) configured, so virtual machines can access the server.
 
 <p align="left">
-  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASInterfaces.jpg" style="width:1000px;">
+  <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/TrueNASInterfaces.jpg" style="width:500px;">
 </p>
 
 - IP forwarding is enabled for Tailscale and ZeroTier, allowing me to access the server using the same local IP—whether I’m at home or connected remotely via VPN.
