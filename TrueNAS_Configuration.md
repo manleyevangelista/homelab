@@ -393,7 +393,6 @@ Auto assign IP.
 * [x] Enabled
 * Timeout: `10`
 
-
 * Description: `IP forward from Onboard Ethernet  Zerotier Interface.`
 * Command: `iptables -A FORWARD -i eno1 -o zth6rot23g -j ACCEPT`
 8 Type*: `Command`
@@ -401,7 +400,7 @@ Auto assign IP.
 * [x] Enabled
 * Timeout: `10`
 
-  #### Sysctl
+#### Sysctl
 
 * Variable: `net.ipv4.ip_forward`
 * Value: `1`
