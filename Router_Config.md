@@ -1,7 +1,6 @@
 # Router Configurations
 
-**Note**: This isn't meant to be imported or feed into anything. This is just for reference only.
-Note #2: Unless mentioned, everything else are set to default.
+**Note**: This isn't meant to be imported or feed into anything. This is just for reference only. All unlisted settings are assumed to be left at factory default.
 
 ## Connections
 
