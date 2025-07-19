@@ -22,7 +22,7 @@ I wanted something simple, silent, and reliable, with some level of redundancy �
 
 **Note**: All these only have a gigabit port. 
 
-For those interested, here is my router [configuration](https://github.com/manleyevangelista/homelab/blob/main/Router_Config.md)
+For those interested, [here](https://github.com/manleyevangelista/homelab/blob/main/Router_Config.md) is my router configuration.
 
 **Router #1**: Fiberhome HG6145D (Globe GFiber Prepaid)
 
@@ -88,7 +88,7 @@ The server, by the way, is running TrueNAS Scale 24.04.1 as of writing.
 
 ## Configuration
 
-For those interested, here is my TrueNAS [configuration](https://github.com/manleyevangelista/homelab/blob/main/TrueNAS_Configuration.md)
+For those interested, [here](https://github.com/manleyevangelista/homelab/blob/main/TrueNAS_Configuration.md) is my TrueNAS configuration.
 
 - The two hard drives (2×4TB Seagate SkyHawks) are configured as **RAID 1** pool.
   - Yes, RAID 1 is not a backup, but it does provide a layer of protection in case one of the drives fails, since data is mirrored to both. It's unlikely for both drives to fail at the same time—so if one dies, I just replace it, and the system rebuilds the mirror, like nothing happened.
