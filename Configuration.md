@@ -308,6 +308,57 @@ Name: `Windows`
 * Root Disk: `160 GiB (NVMe)`
 * Location: `apps_vm_ssd_pciex4nvme`
 
+## Apps
+
+### Jellyfin
+
+**Additonal Storage**
+
+* Type*: `Host Path (Path that already exists on the system)`
+* Mount Path*: `/files`
+* Host Path*: `/mnt/raid1_hdd/files`
+
+**Resource Configuration**
+
+* CPUs*: `2`
+* Memory (in MB)*: `8192`
+* GPU Configuration: `[x] Passthrough available (non-NVIDIA) GPUs`
+
+**Transcoding**
+
+* Hardware acceleration: `Intel QuickSync (QSV)`
+* QSV Device: `/dev/dri/renderD128`
+* Enable hardware decoding for: `H264, HEVC, MPEG2, VC1, VP8, VP9, HEVC 10bit, VP9 10bit, Prefer OS DXVA or VA-API hardware decoders`
+* Hardware encoding options: `Enable hardware encoding`
+
+### Tailscale
+
+**Tailscale Configuration**
+
+* Hostname*: `truenas-hp800g3`
+* Auth key*: `Get it from Tailscale.`
+* [x] Auth Once
+* [ ] Reset
+* [x] Accept DNS
+* [ ] Userspace
+* [x] Advertise Exit Node
+*Advertise Routes (Route*): `192.168.0.3/32`
+
+**Network Configuration**
+
+* [x] Host Network
+
+### Zerotier
+
+**Zerotier Configuration**
+
+* Network* (Network ID*): `Get it from ZeroTier`
+* Auth key*: `Get it from Tailscale.`
+
+**Network Configuration**
+
+* [x] Host Network
+
 ## System
 
 ### Advanced Settings
@@ -318,6 +369,7 @@ Name: `Windows`
 * When*: `Post Init`
 * [x] Enabled
 * Timeout: `10`
+
 
 * Description: `IP forward from Onboard Ethernet  Zerotier Interface.`
 * Command: `iptables -A FORWARD -i eno1 -o zth6rot23g -j ACCEPT`
