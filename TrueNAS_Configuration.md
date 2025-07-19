@@ -1,9 +1,11 @@
 # TrueNAS Server Configuration
 
+Note: This isn't meant to be imported into TrueNAS itself. This acts as a reference only.
+
 ## Storage
 
 * Storage: `256GB SSD NVMe x 1`
-* Type: `Stripped`
+* Type: `Striped`
 * Pool name: `apps_vm_ssd_pciex4nvme`
 * Purpose: `applications and virtual machines`
 
@@ -29,8 +31,8 @@
 Windows (SMB) Shares
 
 * Path: `/mnt/raid1_hdd/files`
-* Name: `files'
-* Purpose: `Default share paramenters`
+* Name: `files`
+* Purpose: `Default share parameters`
 * Description:
 * Enabled: `[x]`
 
@@ -47,14 +49,14 @@ Windows (SMB) Shares
 * Pool: `apps_vm_ssd_pciex4nvme`
 * Threshold Days*: `35`
 * Description:
-* Schedule: `Weekley (0 0 * * sun) On Sundays at 00:00 (12:00 AM)`
+* Schedule: `Weekly (0 0 * * sun) On Sundays at 00:00 (12:00 AM)`
 * Enabled: `[x]`
 
 ## Periodic Snapshot Tasks
 
 * Dataset*: 'raid1_hdd"
 * Exclude:
-* Recursive" `[x]`
+* Recursive: `[x]`
 * Snapshot Lifetime8*: `1 WEEK`
 * Naming Scheme: `auto-%Y-%m-%d_%H-%M`
 * Schedule*: `Hourly (8****) At the start of each hour`
@@ -144,7 +146,7 @@ Windows (SMB) Shares
 **User ID and Groups**
 
 * UID*: `0`
-* Auxillary Groups: `builtin_administrators`
+* Auxiliary Groups: `builtin_administrators`
 * Create New Primary Group: `Disabled`
 * Primary Group: `wheel`
 
@@ -183,7 +185,7 @@ Home Directory Permissions:
 **User ID and Groups**
 
 * UID*: `3000`
-* Auxillary Groups: `builtin_users; ftp`
+* Auxiliary Groups: `builtin_users; ftp`
 * Create New Primary Group: `Disabled`
 * Primary Group: `manley`
 
@@ -207,13 +209,13 @@ Home Directory Permissions:
 * [ ] Allowed all sudo commands
 * Allowed sudo commands with password:
 * [ ] Allowed all sudo commands with no password
-* [x] SMB Useer
+* [x] SMB User
 
 #### <moms_name>
 
 **Identification**
 
-* Full Name*: `<moms_name`
+* Full Name*: `<moms_name>'
 * Disable Password: `Disable`
 * E-Mail:
 * New Password:
@@ -222,7 +224,7 @@ Home Directory Permissions:
 **User ID and Groups**
 
 * UID*: `3001`
-* Auxillary Groups: `builtin_users`
+* Auxiliary Groups: `builtin_users`
 * Create New Primary Group: `Disabled`
 * Primary Group: `<moms_name`
 
@@ -246,7 +248,7 @@ Home Directory Permissions:
 * [ ] Allowed all sudo commands
 * Allowed sudo commands with password:
 * [ ] Allowed all sudo commands with no password
-* [x] SMB Useer
+* [x] SMB User
 
 ### Groups
 
@@ -254,7 +256,7 @@ manley
 
 * GID*: `3000`
 * Name*: `manley`
-* Priviledges:
+* Privileges:
 * Allowed sudo commands:
 * [ ] Allowed all sudo commands
 * Allowed sudo commands with password:
@@ -264,7 +266,7 @@ manley
 
 * GID*: `3000`
 * Name*: `<moms_name>`
-* Priviledges:
+* Privileges:
 * Allowed sudo commands:
 * [ ] Allowed all sudo commands
 * Allowed sudo commands with password:
@@ -312,7 +314,7 @@ Name: `Windows`
 
 ### Jellyfin
 
-**Additonal Storage**
+**Additional Storage**
 
 * Type*: `Host Path (Path that already exists on the system)`
 * Mount Path*: `/files`
@@ -342,11 +344,23 @@ Name: `Windows`
 * [x] Accept DNS
 * [ ] Userspace
 * [x] Advertise Exit Node
-*Advertise Routes (Route*): `192.168.0.3/32`
+* Advertise Routes (Route*): `192.168.0.3/32`
 
 **Network Configuration**
 
 * [x] Host Network
+
+**On Tailscale's website**
+
+Enable subnet routes from the admin console
+You can skip this step if you use autoapprovers.
+
+Open the Machines page of the admin console.
+Locate the Subnets badge in the devices list or use the property:subnet filter to list all devices advertising subnet routes.
+Select a device with the subnet property, then navigate to the Routing Settings section.
+Select Edit. This opens the Edit route settings.
+Under Subnet routes, select the routes to approve, then select Save.
+You can disable key expiry on your server to avoid having to periodically reauthenticate. If you use tags, key expiry is disabled by default.
 
 ### Zerotier
 
@@ -359,9 +373,18 @@ Name: `Windows`
 
 * [x] Host Network
 
+**Managed Routes (on ZeroTier website)**
+
+192.168.193.0/24
+192.168.0.0/24 via 192.168.193.80 (Zerotier IP of TrueNAS server).
+
+Auto assign IP.
+
 ## System
 
 ### Advanced Settings
+
+#### Init/Shutdown Scripts
 
 * Description: `IP forward from Zerotier Interface to Onboard Ethernet.`
 * Command: `iptables -A FORWARD -i zth6rot23g -o eno1 -j ACCEPT`
@@ -377,3 +400,11 @@ Name: `Windows`
 * When*: `Post Init`
 * [x] Enabled
 * Timeout: `10`
+
+  #### Sysctl
+
+* Variable: `net.ipv4.ip_forward`
+* Value: `1`
+
+* Variable: `net.ipv6.conf.all.forwarding`
+* Value: `1`
