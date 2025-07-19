@@ -54,7 +54,7 @@ Windows (SMB) Shares
 
 ## Periodic Snapshot Tasks
 
-* Dataset*: 'raid1_hdd"
+* Dataset*: `raid1_hdd`
 * Exclude:
 * Recursive: `[x]`
 * Snapshot Lifetime8*: `1 WEEK`
@@ -82,9 +82,9 @@ Windows (SMB) Shares
 * Autoconfigure IPv6: `[ ]`
 * Bridge Members: `eno1`
 * Enable Learning: `[x]`
-* MTU: 1500
+* MTU: `1500`
 * Aliases:
-  * IP Address*: `192.168.0.3/24`
+* IP Address*: `192.168.0.3/24`
 
 * Name*: `zth6rot23g`
 * Description: `ZeroTier interface.`
@@ -215,7 +215,7 @@ Home Directory Permissions:
 
 **Identification**
 
-* Full Name*: `<moms_name>'
+* Full Name*: `<moms_name>`
 * Disable Password: `Disable`
 * E-Mail:
 * New Password:
@@ -226,7 +226,7 @@ Home Directory Permissions:
 * UID*: `3001`
 * Auxiliary Groups: `builtin_users`
 * Create New Primary Group: `Disabled`
-* Primary Group: `<moms_name`
+* Primary Group: `<moms_name>`
 
 **Directories and Permissions**
 
