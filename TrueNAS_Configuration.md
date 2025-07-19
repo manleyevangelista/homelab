@@ -1,3 +1,5 @@
+[Return to Home (readme.md)](https://github.com/manleyevangelista/homelab/blob/main/readme.md)
+
 # TrueNAS Server Configuration
 
 Note: This isn't meant to be imported into TrueNAS itself. This acts as a reference only.
@@ -407,3 +409,5 @@ Auto assign IP.
 
 * Variable: `net.ipv6.conf.all.forwarding`
 * Value: `1`
+
+[Return to Home (readme.md)](https://github.com/manleyevangelista/homelab/blob/main/readme.md)
