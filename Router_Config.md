@@ -1,3 +1,5 @@
+[Return to Home (readme.md)](https://github.com/manleyevangelista/homelab/blob/main/readme.md)
+
 # Router Configurations
 
 **Note**: This isn't meant to be imported or feed into anything. This is just for reference only. All unlisted settings are assumed to be left at factory default.
@@ -95,3 +97,5 @@ IP: `192.168.0.1` (TP-Link AX3000)
 * SSID Hidden?: `No`
 * Airtime Fairness Feature: `Yes`
 * Multi-User MIMO Feature: `Yes`
+
+[Return to Home (readme.md)](https://github.com/manleyevangelista/homelab/blob/main/readme.md)
