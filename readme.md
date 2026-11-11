@@ -1,4 +1,6 @@
-# Manley's Mini Home Lab
+# Manley's Mini Home Lab (2024-2026)
+
+**EDIT:** This homelab has been defunct as I had completely rebuilt it. I will eventually document the new one on my [website](http://www.manleyevangelista.com).
 
 <img src="https://github.com/manleyevangelista/homelab/blob/main/images/07172025/homelab_setup_07172025.jpg" style="width:800px;">
 
